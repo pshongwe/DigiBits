@@ -1,8 +1,94 @@
 <template>
-  <div id="app">
-    <form-data v-if="form_id.length>1" :form_id="form_id" />
-    
-      </div>
+<v-app>
+  <v-navigation-drawer app permanet>
+
+     <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Application
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            subtext
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    <!-- -->
+  </v-navigation-drawer>
+
+  <v-app-bar app>
+     <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Page title</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-menu
+        left
+        bottom
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="n in 5"
+            :key="n"
+            @click="() => {}"
+          >
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    <!-- -->
+  </v-app-bar>
+
+  <!-- Sizes your content based upon application components -->
+  <v-content>
+
+    <!-- Provides the application the proper gutter -->
+    <v-container fluid>
+
+      <!-- If using vue-router -->
+      <router-view></router-view>
+    </v-container>
+  </v-content>
+
+  <v-footer app>
+    <!-- -->
+  </v-footer>
+</v-app>
 </template>
 
 <script>
@@ -18,14 +104,27 @@ export default {
     FormData
   },
   async created(){
-    const {data} = await axios.get(`${get_url}/form`)
-    if(data.length>0){
-      this.form_id = data[0]._id
-    }
+    const {data} = axios.get(`${get_url}/form`)
+    console.log
   },
   data(){
     return {
-      form_id:''
+      form_id:'',
+      items: [
+        { icon: "home", title: "home", route: "dashboard" },
+        { icon: "file-document-outline", title: "data", route: "attendance" },
+        { icon: "schedule", title: "Exam Schedule", route: "exam-schedule" },
+        {
+          icon: "folder_open",
+          title: "Attendance Report",
+          route: "attendance-report"
+        },
+        {
+          icon: "person_add",
+          title: "Register Student",
+          route: "register-student"
+        }
+      ]
     }
   },
   methods:{
