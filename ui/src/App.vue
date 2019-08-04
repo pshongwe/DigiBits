@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-navigation-drawer app permanet>
+    <v-navigation-drawer app permanent>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="title">Application</v-list-item-title>
-          <v-list-item-subtitle>subtext</v-list-item-subtitle>
+          <v-list-item-title class="title">EDET</v-list-item-title>
+          <v-list-item-subtitle>tool</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -27,7 +27,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Page title</v-toolbar-title>
+      <v-toolbar-title>Data Capture</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -58,6 +58,10 @@
     <!-- Sizes your content based upon application components -->
     <v-content>
       <!-- Provides the application the proper gutter -->
+
+      <div class="text-center">
+    
+  </div>
       <v-container fluid>
         <!-- If using vue-router -->
         <router-view></router-view>
@@ -84,25 +88,16 @@ export default {
   },
   async created() {
     const { data } = axios.get(`${get_url}/form`);
-    console.log;
   },
   data() {
     return {
       form_id: "",
       items: [
-        { icon: "home", title: "home", route: "home" },
-        { icon: "file", title: "data", route: "data" },
-        { icon: "form", title: "forms", route: "forms" },
-        {
-          icon: "organisation",
-          title: "Organisations",
-          route: "organisations"
-        },
-        {
-          icon: "person",
-          title: "Users",
-          route: "users"
-        }
+        { icon: "mdi-home", title: "Home", route: "home" },
+        { icon: "mdi-file", title: "Data", route: "data" },
+        { icon: "mdi-file-document", title: "Forms", route: "forms" },
+        { icon: "mdi-office-building", title: "Organisations", route: "organisations"},
+        { icon: "mdi-human", title: "Users", route: "users"}
       ]
     };
   },
@@ -119,4 +114,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
