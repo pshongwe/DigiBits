@@ -1,22 +1,22 @@
 <template>
     <div>
-        <v-subheader>{{description}}</v-subheader>
+        <v-subheader>{{title}}</v-subheader>
 
         <div
-                v-for="(inp ,id) in indicators"
+                v-for="(inp ,id) in fields"
                 :key="id"
         >
             <v-text-field
                     v-show="inp.type!=='select'"
-                    :label="inp.description"
+                    :label="inp.label"
                     :type="inp.type"
-                    v-model="inputs[inp._id]"
+                    v-model="inputs[inp.v_model]"
             >
             </v-text-field>
             <v-select
                     v-show="inp.type==='select'"
                     :items="inp.items"
-                    v-model="inputs[inp.description]"
+                    v-model="inputs[inp.v_model]"
                     label="Select"
                     class="input-group--focused"
                     item-value="text"
@@ -27,7 +27,7 @@
 
 <script>
     export default {
-        props:['description','indicators','value'],
+        props:['title','fields','value'],
         name: "uform",
         data(){
             return{
