@@ -1,4 +1,4 @@
 # DigiBits
-# DigiBits
-# DigiBits
-# DigiBits
+
+## License
+MIT
