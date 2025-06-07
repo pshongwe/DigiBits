@@ -1,8 +1,10 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <FileUpload />
+    <div class="upload-card">
+      <img alt="Vue logo" src="../assets/logo.png">
+      <HelloWorld msg="DigiBits Document Submission"/>
+      <FileUpload />
+    </div>
   </div>
 </template>
 
