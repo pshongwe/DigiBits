@@ -20,7 +20,7 @@ export default {
       axios
         .get(path)
         .then((res) => {
-          this.msg = res.data;
+          this.msg = res.data.message;
         })
         .catch((error) => {
           // eslint-disable-next-line
