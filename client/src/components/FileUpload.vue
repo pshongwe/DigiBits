@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="upload-container">
     <input type="file" @change="onFileChange">
     <button @click="submit">Upload</button>
-    <p>{{ status }}</p>
+    <p class="status">{{ status }}</p>
   </div>
 </template>
 
@@ -39,3 +39,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
